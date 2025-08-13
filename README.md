@@ -10,8 +10,7 @@
   ```bat
   git clone https://github.com/lamina-dev/LMVM.git
   cd LMVM
-  cargo build --release
-  .\target\release\LMVM.exe <你的二进制文件路径>
+  cargo run --release -- <你的二进制文件路径>
   ```
 - [架构设计]<br>
   采用了类Intel X86指令集，基于Rust语言实现。<br>
