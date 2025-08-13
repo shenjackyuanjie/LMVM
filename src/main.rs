@@ -1,6 +1,5 @@
 pub(crate) mod interpreter;
 
-use crate::interpreter::vm;
 use interpreter::Runner;
 use std::{env, fs::File, io::Read};
 
@@ -13,7 +12,7 @@ fn main() -> anyhow::Result<()> {
     let mut file = File::open(args[1].clone())?;
 
     let register: Vec<i64> = vec![0; 10];
-    let heap: Vec<vm::Types> = vec![];
+    let heap: Vec<interpreter::vm::Types> = vec![];
     let mut bytes: Vec<u8> = Vec::new();
     file.read_to_end(&mut bytes)?;
 
