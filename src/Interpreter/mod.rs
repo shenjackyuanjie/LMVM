@@ -1,5 +1,3 @@
-use std::error::Error;
-
 use crate::Interpreter::VM::ByteInstruction;
 
 pub mod VM;
@@ -15,9 +13,8 @@ pub struct Runner {
 impl Runner {
     pub fn run(&self) {
         //运行！
-        let code = &self.spilt();
-        for c in code {
-            run_one_line_code(&c);
+        for code_line in self.spilt().iter() {
+            run_one_line_code(code_line);
         }
     }
     fn spilt(&self) -> Vec<Vec<u8>> {
@@ -27,12 +24,12 @@ impl Runner {
         let mut start: usize = 0;
         while i < self.code.len() {
             if matches!(
-                ByteInstruction::get_u8_to_byte(&self.code[i]),
+                ByteInstruction::from(self.code[i]),
                 ByteInstruction::END
             ) {
                 let tmp_vec = Vec::from(&self.code[start..=i]);
                 start = i + 1;
-                (&mut spilt).push(tmp_vec);
+                spilt.push(tmp_vec);
             }
             i += 1;
         }
@@ -61,7 +58,11 @@ fn vm_rt_error(text: &str, runtime_error_type: runtime_error_type) {
 
 pub fn run_one_line_code(code: &Vec<u8>) {
     //执行单条指令
-    match VM::ByteInstruction::get_u8_to_byte(&code[0]) {
+    if code.is_empty() {
+        vm_rt_error("空指令", runtime_error_type::NULL_ERROR);
+    }
+    let instruction: ByteInstruction = code[0].into();
+    match instruction {
         ByteInstruction::MOVMI => {
             let left = &code[1..=8].try_into().ok().map(i64::from_le_bytes);
             let right = &code[9..].try_into().ok().map(i64::from_le_bytes);

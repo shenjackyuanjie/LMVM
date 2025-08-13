@@ -63,8 +63,9 @@ pub enum ByteInstruction {
     UNKNOWN,
     END,
 }
-impl ByteInstruction {
-    pub(crate) fn get_u8_to_byte(b: &u8) -> ByteInstruction {
+
+impl From<u8> for ByteInstruction {
+    fn from(b: u8) -> Self {
         match b {
             0 => ByteInstruction::VMCALL,
             1 => ByteInstruction::SYSCALL,
