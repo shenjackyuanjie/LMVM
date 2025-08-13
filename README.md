@@ -1,7 +1,6 @@
 # LMVM - Lamina 虚拟机运行时 （未完工状态）
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Build Status](https://github.com/lamina-dev/LMVM/actions/workflows/ci.yml/badge.svg)](https://github.com/lamina-dev/LMVM/actions)
 
 一个用 Rust 实现的高效 **Lamina后端运行时**，深度绑定Rust高安全特性。
 
@@ -14,13 +13,13 @@
   cargo build --release
   .\target\release\LMVM.exe <你的二进制文件路径>
   ```
-- [架构设计]
-  采用了类Intel X86指令集，基于Rust语言实现。
-  借鉴了AT&T指令后缀，使用immu(i),memory(m),register(r)来表示指令参数
-  分为双后缀（例如movrr,movrm）和单后缀指令（例如addr,addi）
-  采用block块指令结构，指令集由指令块组成
-  支持部分高级语法，强类型（未实现）
-  不采用栈模型，全局64位寻址模式，有r0-r9的8字节寄存器和heap
+- [架构设计]<br>
+  采用了类Intel X86指令集，基于Rust语言实现。<br>
+  借鉴了AT&T指令后缀，使用immu(i),memory(m),register(r)来表示指令参数<br>
+  分为双后缀（例如movrr,movrm）和单后缀指令（例如addr,addi）<br>
+  采用block块指令结构，指令集由指令块组成<br>
+  支持部分高级语法，强类型（未实现）<br>
+  不采用栈模型，全局64位寻址模式，有r0-r9的8字节寄存器和heap<br>
 - [指令集]
   - [基础指令]
      
