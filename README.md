@@ -1,6 +1,6 @@
 # LMVM - Lamina 虚拟机运行时 （未完工状态）
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<!--[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)-->
 
 一个用 Rust 实现的高效 **Lamina后端运行时**，深度绑定Rust高安全特性。
 
@@ -39,5 +39,6 @@
 ---
 
 ## 快速开始
+
 
 ### 安装
