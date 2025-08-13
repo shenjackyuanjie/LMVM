@@ -1,4 +1,5 @@
-pub enum Types { //rust类型映射
+pub enum Types {
+    //rust类型映射
     RI8(i8),
     RI16(i16),
     RI32(i32),
@@ -10,36 +11,60 @@ pub enum Types { //rust类型映射
     RF32(f32),
     RF64(f64),
     RFBOOL(bool),
-    RString(String)
+    RString(String),
 }
 
-pub struct Block { //块
+pub struct Block {
+    //块
     key: u64,
     heap: Vec<Types>,
-    codes: Vec<u8>
+    codes: Vec<u8>,
 }
-pub struct LmObject { //基类
+pub struct LmObject {
+    //基类
     key: u64,
     value: Types,
-    parent: Block
+    parent: Block,
 }
 
-pub enum ByteInstruction { //字节指令
-    VMCALL,SYSCALL,
-    MOVRI,MOVRR,MOVRM,
-    MOVMI,MOVMR,MOVMM,
-    ADDI,ADDR,ADDM,
-    SUBI,SUBR,SUBM,
-    MULI,MULR,MULM,
-    DIVI,DIVR,DIVM,
+pub enum ByteInstruction {
+    //字节指令
+    VMCALL,
+    SYSCALL,
+    MOVRI,
+    MOVRR,
+    MOVRM,
+    MOVMI,
+    MOVMR,
+    MOVMM,
+    ADDI,
+    ADDR,
+    ADDM,
+    SUBI,
+    SUBR,
+    SUBM,
+    MULI,
+    MULR,
+    MULM,
+    DIVI,
+    DIVR,
+    DIVM,
 
-    R0,R1,R2,R3,R4,R5,R6,R7,R8,R9,
+    R0,
+    R1,
+    R2,
+    R3,
+    R4,
+    R5,
+    R6,
+    R7,
+    R8,
+    R9,
     UNKNOWN,
     END,
-    
 }
 impl ByteInstruction {
-    pub(crate) fn get_u8_to_byte(b:&u8) -> ByteInstruction {
+    pub(crate) fn get_u8_to_byte(b: &u8) -> ByteInstruction {
         match b {
             0 => ByteInstruction::VMCALL,
             1 => ByteInstruction::SYSCALL,
@@ -76,5 +101,4 @@ impl ByteInstruction {
             _ => ByteInstruction::UNKNOWN,
         }
     }
-
 }

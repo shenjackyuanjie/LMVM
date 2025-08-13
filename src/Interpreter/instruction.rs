@@ -3,12 +3,12 @@
 */
 
 pub mod mov {
-    pub fn movmi(){
+    pub fn movmi() {
         todo!()
     }
 }
 pub mod add {
-    pub fn addi(){
+    pub fn addi() {
         todo!()
     }
 }
